@@ -7,47 +7,51 @@ import os
 import re
 from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import yaml
 from yaml.loader import SafeLoader
-from zoneinfo import ZoneInfo
 
 logger = logging.getLogger(__name__)
 
 
-def get_abs_data_path(name="", version="latest", location="get_from_env", local_parent_folder=""):
+def get_abs_data_path(
+    name="", version="latest", location="get_from_env", local_parent_folder=""
+):
     """Return the absolute path to the data directory from data/repository.yaml.
 
-    Sets the location of the data set. Can be "repo" or "local" or "get_from_env".
-    - "get_from_env" is the default. The function will return the look for the value of the
-        environment variable ZLFLODATA_LOCATION. If not found, it will default to "repo", if found
-        it's value will be used as the `local_parent_folder` of the local data set.
-    - "repo" means the repository contains the data set. It is packaged with the zlflodata package.
-    - "local" is the path to the local data set. If only local is defined the data is not 
-       shipped with the zlflodata package. Please reach out to
-       the data set owner listed in repository.yaml to obtain the data set.
-       If local, defining parent folder is required.
-    - "zlflo_server" is the data set on the zlflo server. Format is correct
-        and the data is unaltered. Used for working on the zlflo.com server.
+    Sets the location of the data set. Can be "repo" or "local" or "get_from_env":
+    - "get_from_env" is the default. The function will return the look for the
+      value of the environment variable ZLFLODATA_LOCATION. If not found, it will
+      default to "repo", if found it's value will be used as the
+      `local_parent_folder` of the local data set.
+    - "repo" means the repository contains the data set. It is packaged with
+      the zlflodata package.
+    - "local" is the path to the local data set. If only local is defined the data
+      is not shipped with the zlflodata package. Please reach out to the data set
+      owner listed in repository.yaml to obtain the data set. If local, defining
+      parent folder is required.
+    - "zlflo_server" is the data set on the zlflo server. Format is correct and the
+      data is unaltered. Used for working on the zlflo.com server.
 
     Parameters
     ----------
     name : str
         Name of the data set.
     version : str
-        Version of the data set. Can be "latest" or a specific version number. Version numbers
-        must be a valid semantic version number: 1.0.0, 1.0.1, 1.1.0, etc.
-        Corresponds to the verion_zlflo entry in repository.yaml.
+        Version of the data set. Can be "latest" or a specific version number.
+        Version numbers must be a valid semantic version number: 1.0.0, 1.0.1,
+        1.1.0, etc. Corresponds to the verion_zlflo entry in repository.yaml.
     location : str, optional
         Location of the data set. Can be "repo", "local" or "get_from_env".
-        - "get_from_env" is the default. The function will return the look for the value of the
-            environment variable ZLFLODATA_LOCATION for the data path. Repo will be used if the
-            variable is not found.
-        - "repo" is the repository of the data set. It is packaged with the zlflodata package.
-        - "local" is the local data set. This data is not shipped  with the 
-           zlflodata package. Please reach out to
-           the data set owner listed in repository.yaml to obtain the data set.
-           If local, defining parent folder is required.
+        - "get_from_env" is the default. The function will return the look for the
+          value of the environment variable ZLFLODATA_LOCATION for the data path. Repo
+          will be used if the variable is not found.
+        - "repo" is the repository of the data set. It is packaged with the zlflodata
+          package.
+        - "local" is the local data set. This data is not shipped with the zlflodata
+          package. Please reach out to the data set owner listed in repository.yaml to
+          obtain the data set. If local, defining parent folder is required.
     local_parent_folder : str, optional
         Parent folder of the local data set. Required if location is "local".
         Must be left empty if location is "get_from_env".
@@ -125,7 +129,10 @@ def get_latest_data_paths() -> list[Path]:
     ./data/subfolder1/v1.2.3
     """
     dataset_names = sorted(get_repository_data().keys())
-    dataset_paths = [get_abs_data_path(name, version="latest", location="repo") for name in dataset_names]
+    dataset_paths = [
+        get_abs_data_path(name, version="latest", location="repo")
+        for name in dataset_names
+    ]
     return [Path(path) for path in dataset_paths]
 
 
@@ -167,7 +174,9 @@ def create_new_dataset(name, version="1.0.0", location="repo", makedirs=True, **
     new_entry = {
         "version_zlflo": version,
         "owner": None,
-        "publication_date": datetime.now(tz=ZoneInfo("Europe/Amsterdam")).strftime("%Y-%m-%d"),
+        "publication_date": datetime.now(tz=ZoneInfo("Europe/Amsterdam")).strftime(
+            "%Y-%m-%d"
+        ),
         "version_owner": version,
         "description_short": None,
         "description_long": None,
