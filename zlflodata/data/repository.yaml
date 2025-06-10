@@ -1,0 +1,19 @@
+title: ZLFLO data repository
+description: Repository containing the public data for ZLFLO.
+data:
+  example_dataset:
+    - version_zlflo: 1.0.0
+      owner: Artesia
+      publication_date: "2025-06-10"
+      version_owner: 2.1.0
+      description_short: Example entry
+      description_long: Fake example entry for ZLFLO data repository.
+      contact: d.brakenhoff@artesia-water.nl
+      timezone: Europe/Amsterdam
+      extent: [0., 100000., 300000., 400000.]
+      paths:
+        local: example/v1.0.0
+        repo: public/example/v1.0.0
+      changelog:
+        previous_version: 0.0.0
+        log: Initial version
