@@ -1,0 +1,25 @@
+name: ZLFLO Data file validation
+on:
+  push:
+    branches:
+      - main
+jobs:
+  data-validation:
+    name: Test for forbidden file formats
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Test for forbidden file formats
+        run: uv run pytest tests/test_forbidden_file_formats.py -v
