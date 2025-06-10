@@ -26,10 +26,7 @@ def test_repo_folder_structure():
                     f" {version['paths']['local']}"
                 )
 
-            if (
-                version["paths"]["repo"]
-                != f"public/{name}/v{version['version_zlflo']}"
-            ):
+            if version["paths"]["repo"] != f"public/{name}/v{version['version_zlflo']}":
                 pytest.fail(
                     "Path in repository.yaml does not match the expected path:"
                     f" {version['paths']['public']}"
