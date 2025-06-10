@@ -1,0 +1,55 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+authors = [{ name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Programming Language :: Python",
+    "Topic :: Utilities",
+]
+description = "Data for the ZLFLO groundwater modeling framework."
+keywords = ["ZLFLO"]
+license = { file = "LICENSE.txt" }
+maintainers = [{ name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" }]
+name = "zlflodata"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["pyyaml>=6.0.1"]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+format = ["ruff"]
+test = ["pytest", "yamale", "yamllint"]
+
+[tool.hatch.version]
+path = "zlflodata/version.py"
+
+[tool.ruff]
+line-length = 88
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+# See: https://docs.astral.sh/ruff/rules/
+select = [
+    "C4",  # flake8-comprehensions
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "I",   # isort
+    "PT",  # pytest-style
+    "D",   # pydocstyle
+    "B",   # flake8-bugbear
+    "NPY", # numpy
+]
+
+[tool.ruff.format]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
