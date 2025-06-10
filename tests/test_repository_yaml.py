@@ -1,6 +1,7 @@
 """Tests for YAML schema validation and linting.
 
-This module validates both schema compliance using yamale and style rules using yamllint.
+This module validates both schema compliance using yamale and style rules using
+yamllint.
 """
 
 from pathlib import Path
