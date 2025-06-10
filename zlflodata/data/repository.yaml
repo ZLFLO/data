@@ -12,8 +12,8 @@ data:
       timezone: Europe/Amsterdam
       extent: [0., 100000., 300000., 400000.]
       paths:
-        local: example/v1.0.0
-        repo: public/example/v1.0.0
+        local: example_dataset/v1.0.0
+        repo: public/example_dataset/v1.0.0
       changelog:
         previous_version: 0.0.0
         log: Initial version
