@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "example_gdf",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::28992" } },
+"features": [
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 24900.0, 398600.0 ], [ 24600.0, 398600.0 ], [ 24600.0, 398800.0 ], [ 24900.0, 398800.0 ], [ 24900.0, 398600.0 ] ] ] } }
+]
+}

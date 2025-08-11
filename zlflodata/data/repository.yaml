@@ -7,13 +7,14 @@ data:
       publication_date: "2025-06-10"
       version_owner: 2.1.0
       description_short: Example entry
-      description_long: Fake example entry for ZLFLO data repository.
-      contact: d.brakenhoff@artesia-water.nl
+      description_long: Example rectangular polygon.
+      contact: o.ebbens@artesia-water.nl
       timezone: Europe/Amsterdam
-      extent: [0., 100000., 300000., 400000.]
+      extent: [24600., 24900., 398600., 398800.]
       paths:
         local: example_dataset/v1.0.0
         repo: public/example_dataset/v1.0.0
       changelog:
         previous_version: 0.0.0
         log: Initial version
+
