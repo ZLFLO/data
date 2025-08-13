@@ -32,12 +32,10 @@ license = { file = "LICENSE.txt" }
 [project.optional-dependencies]
 lint = ["ruff"]
 test = ["pytest", "yamale", "yamllint"]
+dev = ["zlfodata[lint,test]"]
 
 [tool.setuptools.dynamic]
 version = { attr = "zlflodata._version.__version__" }
-
-[tool.uv]
-default-groups = ["lint", "test"]
 
 [tool.ruff]
 extend-include = ["*.ipynb"]
