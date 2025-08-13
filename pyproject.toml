@@ -32,7 +32,7 @@ license = { file = "LICENSE.txt" }
 [project.optional-dependencies]
 lint = ["ruff"]
 test = ["pytest", "yamale", "yamllint"]
-dev = ["zlfodata[lint,test]"]
+dev = ["zlflodata[lint,test]"]
 
 [tool.setuptools.dynamic]
 version = { attr = "zlflodata._version.__version__" }
