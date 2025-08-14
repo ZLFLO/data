@@ -25,4 +25,4 @@ jobs:
         run: uv pip install .[dev]
 
       - name: Test for forbidden file formats
-        run: uvx pytest tests/test_forbidden_file_formats.py -v
+        run: uv run pytest tests/test_forbidden_file_formats.py -v

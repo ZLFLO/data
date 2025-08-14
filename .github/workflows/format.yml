@@ -30,10 +30,10 @@ jobs:
         run: uv pip install .[dev]
 
       - name: Check if linted with ruff
-        run: uvx ruff check --extend-select I -show-fixes --diff
+        run: uv run ruff check --extend-select I -show-fixes --diff
 
       - name: Check if formatted with ruff
-        run: uvx ruff format --check --diff
+        run: uv run ruff format --check --diff
 
       - name: Lint repository.yaml and check repo folder structure
-        run: uvx pytest tests/test_repository_yaml.py tests/test_repo_folder_structure.py -v
+        run: uv run pytest tests/test_repository_yaml.py tests/test_repo_folder_structure.py -v
